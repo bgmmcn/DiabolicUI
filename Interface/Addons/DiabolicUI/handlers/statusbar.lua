@@ -428,7 +428,13 @@ StatusBar.GetAlpha = function(self)
 end
 
 StatusBar.GetParent = function(self)
-	return self.scaffold:GetParent()
+    -- Before accessing self.scaffold, add a check
+    if self.scaffold then
+        return self.scaffold:GetParent()
+    else
+        -- print("Warning: self.scaffold is nil at statusbar.lua, line 431")
+        return nil
+    end
 end
 
 StatusBar.GetObjectType = function(self) return "StatusBar" end

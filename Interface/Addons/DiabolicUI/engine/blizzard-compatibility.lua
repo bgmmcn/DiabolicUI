@@ -204,28 +204,33 @@ if not ENGINE_CATA then
 	end
 
 	local getBOALevel = function(level, id)
-		if level > 97 then
-			if BOAItems[id] then
-				level = 715
-			else
-				level = 605 - (100 - level) * 5
-			end
-		elseif level > 90 then
-			level = 590 - (97 - level) * 10
-		elseif level > 85 then
-			level = 463 - (90 - level) * 19.5
-		elseif level > 80 then
-			level = 333 - (85 - level) * 13.5
-		elseif level > 67 then
-			level = 187 - (80 - level) * 4
-		elseif level > 57 then
-			level = 105 - (67 - level) * 2.8
-		else
-			level = level + 5
-		end
-
-		return level
+	-- Check if level is nil or not a number, and set a default level
+	if not level or type(level) ~= "number" then
+		level = 80  -- Default to level 80 or any other default value that makes sense
 	end
+	
+	if level > 97 then
+		if BOAItems[id] then
+		level = 715
+		else
+		level = 605 - (100 - level) * 5
+		end
+	elseif level > 90 then
+		level = 590 - (97 - level) * 10
+	elseif level > 85 then
+		level = 463 - (90 - level) * 19.5
+	elseif level > 80 then
+		level = 333 - (85 - level) * 13.5
+	elseif level > 67 then
+		level = 187 - (80 - level) * 4
+	elseif level > 57 then
+		level = 105 - (67 - level) * 2.8
+	else
+		level = level + 5
+	end
+	
+	return level
+end
 
 	local isPvPItem = function(item)
 		if itemPvPCache[item] then

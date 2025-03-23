@@ -126,13 +126,19 @@ BarWidget.OnEnable = function(self)
 	--------------------------------------------------------------------
 	-- Visibility Drivers
 	--------------------------------------------------------------------
-	Bar:SetAttribute("_onstate-vis", [[
-		if newstate == "hide" then
-			self:Hide();
-		elseif newstate == "show" then
-			self:Show();
-		end
-	]])
+Bar:SetAttribute("_onstate-vis", [[
+    if newstate == "hide" then
+        self:Hide();
+        if SOUNDKIT and SOUNDKIT.UI_BAG_SORTING_01 then
+            PlaySound(SOUNDKIT.UI_BAG_SORTING_01, "SFX")
+        end
+    elseif newstate == "show" then
+        self:Show();
+        if SOUNDKIT and SOUNDKIT.UI_VEHICLE_ENTER then
+            PlaySound(SOUNDKIT.UI_VEHICLE_ENTER, "SFX")
+        end
+    end
+]])
 
 	twipe(driver)
 	tinsert(driver, ENGINE_MOP and "[overridebar][possessbar][shapeshift]show" or "[bonusbar:5]show")

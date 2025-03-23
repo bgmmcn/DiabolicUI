@@ -492,7 +492,12 @@ Orb.GetStatusBarColor = function(self, id)
 end
 
 Orb.GetParent = function(self)
-	return self.scaffold:GetParent()
+	if self.scaffold then
+		return self.scaffold:GetParent()
+	else
+		-- print("Error: scaffold is nil")
+		return nil
+	end
 end
 
 Orb.CreateTexture = function(self, ...)

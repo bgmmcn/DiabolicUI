@@ -99,14 +99,19 @@ MenuWidget.OnEnable = function(self)
 	self:Skin(ChatButton, input_config, "chat")
 
 
-	InputBox:HookScript("OnShow", function() 
-		ChatButton:SetButtonState("PUSHED", 1)
-		PlaySoundKitID(SOUNDKIT.IG_CHARACTER_INFO_OPEN, "SFX")
-	end)
-	InputBox:HookScript("OnHide", function() 
-		ChatButton:SetButtonState("NORMAL") 
-		PlaySoundKitID(SOUNDKIT.IG_CHARACTER_INFO_CLOSE, "SFX")
-	end)
+InputBox:HookScript("OnShow", function() 
+    ChatButton:SetButtonState("PUSHED", 1)
+    if SOUNDKIT and SOUNDKIT.IG_CHARACTER_INFO_OPEN then
+        PlaySound(SOUNDKIT.IG_CHARACTER_INFO_OPEN, "SFX")
+    end
+end)
+
+InputBox:HookScript("OnHide", function() 
+    ChatButton:SetButtonState("NORMAL") 
+    if SOUNDKIT and SOUNDKIT.IG_CHARACTER_INFO_CLOSE then
+        PlaySound(SOUNDKIT.IG_CHARACTER_INFO_CLOSE, "SFX")
+    end
+end)
 
 
 	local SocialButton = MenuButton:New(Menu)

@@ -47,13 +47,20 @@ end
 -- Colorize a piece of text with the given color
 ---------------------------------------------------------------------
 F.Colorize = function(str, ...)
-	local r, g, b = ...
-	if type(r) == "table" then
-		r, g, b = unpack(r)
-	elseif type(r) == "string" then
-		r, g, b = unpack(C.General[r])
-	end
-	return ("|cff%02X%02X%02X%s|r"):format(math_floor(r*255), math_floor(g*255), math_floor(b*255), str)
+    if not str then
+        return ""  -- or some fallback string
+    end
+    
+    local r, g, b = ...
+    if not r then r, g, b = 1, 1, 1 end  -- default to white if no color is provided
+
+    if type(r) == "table" then
+        r, g, b = unpack(r)
+    elseif type(r) == "string" then
+        r, g, b = unpack(C.General[r] or {1, 1, 1})  -- fallback to white if the color is invalid
+    end
+    
+    return ("|cff%02X%02X%02X%s|r"):format(math_floor(r*255), math_floor(g*255), math_floor(b*255), str)
 end
 
 

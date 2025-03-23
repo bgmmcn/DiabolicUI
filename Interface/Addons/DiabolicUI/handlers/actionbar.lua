@@ -109,8 +109,17 @@ Handler.New = function(self, id, parent, barTemplate, ...)
 	bar:SetFrameRef("Visibility", visibility)
 
 	-- Sounds
-	bar:HookScript("OnShow", function(self) PlaySoundKitID(SOUNDKIT.IG_CHARACTER_INFO_OPEN, "SFX") end)
-	bar:HookScript("OnHide", function(self) PlaySoundKitID(SOUNDKIT.IG_CHARACTER_INFO_CLOSE, "SFX") end)
+bar:HookScript("OnShow", function(self)
+    if SOUNDKIT and SOUNDKIT.IG_CHARACTER_INFO_OPEN then
+        PlaySound(SOUNDKIT.IG_CHARACTER_INFO_OPEN, "SFX")
+    end
+end)
+
+bar:HookScript("OnHide", function(self)
+    if SOUNDKIT and SOUNDKIT.IG_CHARACTER_INFO_CLOSE then
+        PlaySound(SOUNDKIT.IG_CHARACTER_INFO_CLOSE, "SFX")
+    end
+end)
 
 	-- Tell the visibility layer where to find the bar
 	visibility:SetFrameRef("Bar", bar)

@@ -784,22 +784,31 @@ local Style = function(self, unit)
 end
 
 UnitFrameWidget.OnEvent = function(self, event, ...)
-	if (event == "PLAYER_TARGET_CHANGED") then
-		if UnitExists("target") then
-			if UnitIsEnemy("target", "player") then
-				PlaySoundKitID(SOUNDKIT.IG_CREATURE_AGGRO_SELECT, "SFX")
-			elseif UnitIsFriend("player", "target") then
-				PlaySoundKitID(SOUNDKIT.IG_CHARACTER_NPC_SELECT, "SFX")
-			else
-				PlaySoundKitID(SOUNDKIT.IG_CREATURE_NEUTRAL_SELECT, "SFX")
-			end
-		else
-			PlaySoundKitID(SOUNDKIT.INTERFACE_SOUND_LOST_TARGET_UNIT, "SFX")
-		end
-	elseif (event == "PLAYER_ENTERING_WORLD") or (event == "VARIABLES_LOADED") or (event == "CVAR_UPDATE") then
-		ENEMY_PLATES = GetCVarBool("nameplateShowEnemies")
-	end
+    if (event == "PLAYER_TARGET_CHANGED") then
+        if UnitExists("target") then
+            if UnitIsEnemy("target", "player") then
+                if SOUNDKIT and SOUNDKIT.IG_CREATURE_AGGRO_SELECT then
+                    PlaySound(SOUNDKIT.IG_CREATURE_AGGRO_SELECT, "SFX")
+                end
+            elseif UnitIsFriend("player", "target") then
+                if SOUNDKIT and SOUNDKIT.IG_CHARACTER_NPC_SELECT then
+                    PlaySound(SOUNDKIT.IG_CHARACTER_NPC_SELECT, "SFX")
+                end
+            else
+                if SOUNDKIT and SOUNDKIT.IG_CREATURE_NEUTRAL_SELECT then
+                    PlaySound(SOUNDKIT.IG_CREATURE_NEUTRAL_SELECT, "SFX")
+                end
+            end
+        else
+            if SOUNDKIT and SOUNDKIT.INTERFACE_SOUND_LOST_TARGET_UNIT then
+                PlaySound(SOUNDKIT.INTERFACE_SOUND_LOST_TARGET_UNIT, "SFX")
+            end
+        end
+    elseif (event == "PLAYER_ENTERING_WORLD") or (event == "VARIABLES_LOADED") or (event == "CVAR_UPDATE") then
+        ENEMY_PLATES = GetCVarBool("nameplateShowEnemies")
+    end
 end
+
 
 UnitFrameWidget.OnEnable = function(self)
 	self.UnitFrame = UnitFrame:New("target", Engine:GetFrame(), Style)

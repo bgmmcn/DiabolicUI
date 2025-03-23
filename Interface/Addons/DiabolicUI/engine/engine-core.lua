@@ -5,6 +5,12 @@ local L = Engine:GetLocale()
 -- or just to reset the saved settings.
 --local DEVELOPER_RESET = true
 
+local function SafePlaySound(soundID, channel)
+    if SOUNDKIT and type(soundID) == "number" then
+        PlaySound(soundID, channel or "SFX")
+    end
+end
+
 -------------------------------------------------------------
 -- Lua API
 -------------------------------------------------------------
