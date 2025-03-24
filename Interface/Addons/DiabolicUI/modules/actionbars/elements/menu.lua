@@ -1101,14 +1101,38 @@ MenuWidget.OnEnable = function(self)
 
 	-- Sounds
 	---------------------------------------------
-	ActionBarMenuWindow:HookScript("OnShow", function(self) PlaySoundKitID(SOUNDKIT.IG_MAINMENU_OPEN, "SFX") end)
-	ActionBarMenuWindow:HookScript("OnHide", function(self) PlaySoundKitID(SOUNDKIT.IG_MAINMENU_CLOSE, "SFX") end)
-
-	MicroMenuWindow:HookScript("OnShow", function(self) PlaySoundKitID(SOUNDKIT.IG_MAINMENU_OPEN, "SFX") end)
-	MicroMenuWindow:HookScript("OnHide", function(self) PlaySoundKitID(SOUNDKIT.IG_MAINMENU_CLOSE, "SFX") end)
-
-	MasterMenuWindow:HookScript("OnShow", function(self) PlaySoundKitID(SOUNDKIT.IG_MAINMENU_OPEN, "SFX") end)
-	MasterMenuWindow:HookScript("OnHide", function(self) PlaySoundKitID(SOUNDKIT.IG_MAINMENU_CLOSE, "SFX") end)
+	ActionBarMenuWindow:HookScript("OnShow", function(self)
+		if SOUNDKIT and SOUNDKIT.IG_MAINMENU_OPEN then
+			PlaySound(SOUNDKIT.IG_MAINMENU_OPEN, "SFX")
+		end
+	end)
+	ActionBarMenuWindow:HookScript("OnHide", function(self)
+		if SOUNDKIT and SOUNDKIT.IG_MAINMENU_CLOSE then
+			PlaySound(SOUNDKIT.IG_MAINMENU_CLOSE, "SFX")
+		end
+	end)
+	
+	MicroMenuWindow:HookScript("OnShow", function(self)
+		if SOUNDKIT and SOUNDKIT.IG_MAINMENU_OPEN then
+			PlaySound(SOUNDKIT.IG_MAINMENU_OPEN, "SFX")
+		end
+	end)
+	MicroMenuWindow:HookScript("OnHide", function(self)
+		if SOUNDKIT and SOUNDKIT.IG_MAINMENU_CLOSE then
+			PlaySound(SOUNDKIT.IG_MAINMENU_CLOSE, "SFX")
+		end
+	end)
+	
+	MasterMenuWindow:HookScript("OnShow", function(self)
+		if SOUNDKIT and SOUNDKIT.IG_MAINMENU_OPEN then
+			PlaySound(SOUNDKIT.IG_MAINMENU_OPEN, "SFX")
+		end
+	end)
+	MasterMenuWindow:HookScript("OnHide", function(self)
+	if SOUNDKIT and SOUNDKIT.IG_MAINMENU_CLOSE then
+		PlaySound(SOUNDKIT.IG_MAINMENU_CLOSE, "SFX")
+	end
+	end)
 	
 
 	-- We need to manually handle this, as our actionbar script 
