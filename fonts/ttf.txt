@@ -1,5 +1,0 @@
-File Name	Usage
-ARIALN.TTF	Standard text, often used as fallback (chat, etc)
-FRIZQT__.TTF	Default font used for most UI text (Dialogues, quests description, etc)
-MORPHEUS.TTF	Used for zone intro / ambient messages (Tiles, maps area, etc)
-skurri.ttf	Used for titles or stylized effects (damages)

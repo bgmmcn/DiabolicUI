@@ -1,5 +1,5 @@
 local Addon, Engine = ...
-local path = ([[Interface\AddOns\%s\media\fonts\]]):format(Addon)
+local path = ([[Fonts\]]):format(Addon)
 
 Engine:NewStaticConfig("Fonts", {
 	fontObjects = {
@@ -22,9 +22,9 @@ Engine:NewStaticConfig("Fonts", {
 				"DiabolicFont_HeaderBold32"
 			},
 			replacements = {
-				koKR = path .. "NotoSansCJKkr-Regular.otf", -- Korean
-				zhTW = path .. "NotoSansCJKtc-Regular.otf",	-- Chinese - Traditional, Taiwan 
-				zhCN = path .. "NotoSansCJKsc-Regular.otf"	-- Chinese - Simplified, PRC
+				koKR = path .. "ARIALN.TTF", -- Korean
+				zhTW = path .. "ARIALN.TTF",	-- Chinese - Traditional, Taiwan 
+				zhCN = path .. "ARIALN.TTF"	-- Chinese - Simplified, PRC
 			}
 		},
 		regular = {
@@ -70,16 +70,16 @@ Engine:NewStaticConfig("Fonts", {
 				"DiabolicFont_SerifRegular32"
 			},
 			replacements = {
-				koKR = path .. "NotoSansCJKkr-Regular.otf", -- Korean
-				zhTW = path .. "NotoSansCJKtc-Regular.otf",	-- Chinese - Traditional, Taiwan 
-				zhCN = path .. "NotoSansCJKsc-Regular.otf"	-- Chinese - Simplified, PRC
+				koKR = path .. "ARIALN.TTF", -- Korean
+				zhTW = path .. "ARIALN.TTF",	-- Chinese - Traditional, Taiwan 
+				zhCN = path .. "ARIALN.TTF"	-- Chinese - Simplified, PRC
 			}
 		}
 
 	},
 	fonts = {
 		text_normal = {
-			path = path .. "NotoSans-Bold.ttf", -- DejaVuSans
+			path = path .. "ARIALN.TTF", -- DejaVuSans
 			locales = {
 				enUS  = true,
 				enGB = true,
@@ -94,7 +94,7 @@ Engine:NewStaticConfig("Fonts", {
 			}
 		},
 		text_narrow = {
-			path = path .. "NotoSans-Bold.ttf", -- DejaVuSansCondensed
+			path = path .. "ARIALN.TTF", -- DejaVuSansCondensed
 			locales = {
 				enUS  = true,
 				enGB = true,
@@ -109,7 +109,7 @@ Engine:NewStaticConfig("Fonts", {
 			}
 		},
 		text_serif = {
-			path = path .. "NotoSans-Bold.ttf", -- DejaVuSerifCondensed
+			path = path .. "ARIALN.TTF", -- DejaVuSerifCondensed
 			locales = {
 				enUS  = true,
 				enGB = true,
@@ -124,7 +124,7 @@ Engine:NewStaticConfig("Fonts", {
 			}
 		},
 		text_serif_italic = {
-			path = path .. "NotoSans-Bold.ttf", -- DejaVuSerifCondensed-Italic
+			path = path .. "ARIALN.TTF", -- DejaVuSerifCondensed-Italic
 			locales = {
 				enUS  = true,
 				enGB = true,
@@ -139,7 +139,7 @@ Engine:NewStaticConfig("Fonts", {
 			}
 		},
 		header_normal = {
-			path = path .. "ExocetBlizzardMedium.ttf",
+			path = path .. "ARIALN.TTF",
 			locales = {
 				enUS  = true,
 				enGB = true,
@@ -154,7 +154,7 @@ Engine:NewStaticConfig("Fonts", {
 			}
 		},
 		header_light = {
-			path = path .. "ExocetBlizzardLight.ttf",
+			path = path .. "ARIALN.TTF",
 			locales = {
 				enUS  = true,
 				enGB = true,
@@ -169,7 +169,7 @@ Engine:NewStaticConfig("Fonts", {
 			}
 		},
 		number = {
-			path = path .. "Sylfaen.ttf",
+			path = path .. "ARIALN.TTF",
 			locales = {
 				enUS = true,
 				enGB = true,
@@ -184,7 +184,7 @@ Engine:NewStaticConfig("Fonts", {
 			}
 		},
 		damage = {
-			path = path .. "Coalition.ttf", -- Coalition has high res
+			path = path .. "ARIALN.TTF", -- Coalition has high res
 			locales = {
 				enUS = true,
 				enGB = true,
